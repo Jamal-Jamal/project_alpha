@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
-from django.contrib.auth.models import User
 from accounts.forms import LoginForm
 
 
@@ -18,7 +17,7 @@ def user_login(request):
             )
             if user is not None:
                 login(request, user)
-                return redirect("projects")
+                return redirect("list_projects")
     else:
         form = LoginForm()
     context = {
