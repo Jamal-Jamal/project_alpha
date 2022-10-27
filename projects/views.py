@@ -4,7 +4,6 @@ from projects.forms import ProjectForm
 from django.contrib.auth.decorators import login_required
 
 
-
 @login_required
 def list_projects(request):
     projects = Project.objects.filter(owner=request.user)
@@ -17,9 +16,7 @@ def list_projects(request):
 @login_required
 def show_project(request, id):
     projects = get_object_or_404(Project, id=id)
-    context = {
-        "projects": projects
-    }
+    context = {"projects": projects}
     return render(request, "projects/details.html", context)
 
 
