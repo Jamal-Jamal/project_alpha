@@ -13,7 +13,7 @@
     <main>
         <div>
           <h1>My Projects</h1>
-          {% if list_projects|length == 0 %}
+          {% if projects|length == 0 %}
           <p>You are not assigned to any projects</p>
           {% else %}
           <table>
@@ -22,13 +22,9 @@
               <th>Number of tasks</th>
             </tr>
             <tr>
-              {% for project in list_projects %}
-              <td>{{ project.name }}</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td></td>
-              <td></td>
+              {% for project in projects %}
+              <td><a href="{% url 'show_project' project.id %}">{{ project.name }}</a></td>
+              <td>{{ project.tasks.all|length }}</td>
             </tr>
           </table>
           {% endfor %}
